@@ -13,7 +13,7 @@ module "languagetool" {
   version = "0.20.1"
 
   application    = "languagetool"
-  autosign_token = "${var.autosign_token}"
+  autosign_token = var.autosign_token
   dns_ttl        = 30
   domain         = "voges.uk"
   hostname       = "languagetool"
