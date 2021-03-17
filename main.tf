@@ -9,12 +9,12 @@ terraform {
   }
 }
 
-resource "digitalocean_project" "languagetool" {
-  name        = "LanguageTool"
-  description = "languagetool.org API service"
-  purpose     = "Web Application"
-  environment = "Production"
-}
+# resource "digitalocean_project" "languagetool" {
+#   name        = "LanguageTool"
+#   description = "languagetool.org API service"
+#   purpose     = "Web Application"
+#   environment = "Production"
+# }
 
 
 module "languagetool" {
@@ -27,12 +27,9 @@ module "languagetool" {
   domain         = "voges.uk"
   hostname       = "languagetool"
   manage_project = "true"
-  project_name   = digitalocean_project.languagetool.name
+  # project_name   = digitalocean_project.languagetool.name
+  project_name   = "LanguageTool"
   puppet_server  = "pe.shadowsun.com.ar"
   size           = "server"
   tags           = [ "http", "https" ]
-  
-  depends_on = [
-    digitalocean_project.languagetool
-  ]
 }
