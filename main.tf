@@ -31,4 +31,8 @@ module "languagetool" {
   puppet_server  = "pe.shadowsun.com.ar"
   size           = "server"
   tags           = [ "http", "https" ]
+  
+  depends_on = [
+    digitalocean_project.languagetool
+  ]
 }
