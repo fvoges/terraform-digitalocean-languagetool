@@ -1,5 +1,14 @@
 variable "autosign_token" {}
 
+terraform {
+  required_providers {
+    digitalocean = {
+      source  = "digitalocean/digitalocean"
+      version = "~> 2.6"
+    }
+  }
+}
+
 resource "digitalocean_project" "languagetool" {
   name        = "LanguageTool"
   description = "languagetool.org API service"
