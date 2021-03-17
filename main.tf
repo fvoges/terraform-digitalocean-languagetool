@@ -1,6 +1,14 @@
 variable "autosign_token" {}
 
-module "ubuntu" {
+resource "digitalocean_project" "languagetool" {
+  name        = "LanguageTool"
+  description = "languagetool.org API service"
+  purpose     = "Web Application"
+  environment = "Production"
+}
+
+
+module "languagetool" {
   source  = "fvoges/ubuntu/digitalocean"
   version = "0.20.1"
 
