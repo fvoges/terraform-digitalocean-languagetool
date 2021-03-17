@@ -30,6 +30,5 @@ module "languagetool" {
   # project_name   = digitalocean_project.languagetool.name
   project_name   = "LanguageTool"
   puppet_server  = "pe.shadowsun.com.ar"
-  size           = "server"
   tags           = [ "http", "https" ]
 }
