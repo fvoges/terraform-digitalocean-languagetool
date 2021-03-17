@@ -26,7 +26,7 @@ module "languagetool" {
   dns_ttl        = 30
   domain         = "voges.uk"
   hostname       = "languagetool"
-  manage_project = "true"
+  manage_project = false
   # project_name   = digitalocean_project.languagetool.name
   project_name   = "LanguageTool"
   puppet_server  = "pe.shadowsun.com.ar"
