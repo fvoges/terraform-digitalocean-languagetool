@@ -1,4 +1,9 @@
 variable "autosign_token" {}
+variable "region" {
+  type = string
+  description = "droplet region"
+  default = "lon1"
+}
 
 terraform {
   required_providers {
@@ -16,10 +21,14 @@ terraform {
 #   environment = "Production"
 # }
 
+data "digitalocean_vpc" "default" {
+  name = format("default-%s", var.region)
+}
+
 
 module "languagetool" {
   source  = "fvoges/ubuntu/digitalocean"
-  version = "0.20.1"
+  version = "1.0.0"
 
   application    = "languagetool"
   autosign_token = var.autosign_token
@@ -31,4 +40,5 @@ module "languagetool" {
   project_name   = "LanguageTool"
   puppet_server  = "pe.shadowsun.com.ar"
   tags           = [ "http", "https" ]
+  vpc_id         = data.digitalocean_vpc.default.id
 }
