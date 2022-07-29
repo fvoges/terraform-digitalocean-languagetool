@@ -40,4 +40,7 @@ module "languagetool" {
   project_name          = digitalocean_project.languagetool.name
   tags                  = [ "http", "https" ]
   vpc_id                = data.digitalocean_vpc.default.id
+  depends_on            = [
+    digitalocean_project.languagetool
+  ]
 }
