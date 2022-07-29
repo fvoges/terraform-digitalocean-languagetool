@@ -14,12 +14,12 @@ terraform {
   }
 }
 
-# resource "digitalocean_project" "languagetool" {
-#   name        = "LanguageTool"
-#   description = "languagetool.org API service"
-#   purpose     = "Web Application"
-#   environment = "Production"
-# }
+resource "digitalocean_project" "languagetool" {
+  name        = "LanguageTool"
+  description = "languagetool.org API service"
+  purpose     = "Web Application"
+  environment = "Production"
+}
 
 data "digitalocean_vpc" "default" {
   name = format("default-%s", var.region)
@@ -36,7 +36,7 @@ module "languagetool" {
   dns_ttl               = 30
   domain                = "voges.uk"
   hostname              = "languagetool"
-  manage_project        = true
+  manage_project        = false
   project_name          = digitalocean_project.languagetool.name
   tags                  = [ "http", "https" ]
   vpc_id                = data.digitalocean_vpc.default.id
