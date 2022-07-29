@@ -28,7 +28,7 @@ data "digitalocean_vpc" "default" {
 
 module "languagetool" {
   source  = "fvoges/ubuntu/digitalocean"
-  version = "1.0.0"
+  version = "1.0.1"
 
   puppet_application    = "languagetool"
   puppet_autosign_token = var.autosign_token
